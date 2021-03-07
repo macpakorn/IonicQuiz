@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button style="height: fit-content;margin-top: auto;" fill="clear" (click)="back()">Back</ion-button>
+    <ion-title>Edit Quiz</ion-title>
+    <ion-button style="height: fit-content;float: right;" fill="clear" (click)="clear()">clear</ion-button>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card style="height: fit-content;">
+    <ion-textarea placeholder="Please enter your question here" style="font-size: large;text-align: center;" autoGrow="true" [(ngModel)]="List.que"></ion-textarea>
+  </ion-card>
+  <ion-list>
+      <ion-list-header>
+        <ion-label>Please select your correct answer</ion-label>
+      </ion-list-header>
+      <ion-card>
+        <ion-item lines="none">
+          <ion-label>A. </ion-label>
+          <ion-textarea placeholder="Please enter your answer here" style="height: fit-content;margin-top: 18px;" autoGrow="true" [(ngModel)]="List.chA"></ion-textarea>
+          <ion-checkbox style="margin-top: auto;margin-bottom: auto;" [(ngModel)]="Anstatus.boolA"></ion-checkbox>
+        </ion-item>
+      </ion-card>
+
+      <ion-card>
+        <ion-item lines="none">
+          <ion-label>B. </ion-label>
+          <ion-textarea placeholder="Please enter your answer here" style="height: fit-content;margin-top: 18px;" autoGrow="true" [(ngModel)]="List.chB"></ion-textarea>
+          <ion-checkbox style="margin-top: auto;margin-bottom: auto;" [(ngModel)]="Anstatus.boolB"></ion-checkbox>
+        </ion-item>
+      </ion-card>
+
+      <ion-card>
+        <ion-item lines="none">
+          <ion-label>C. </ion-label>
+          <ion-textarea placeholder="Please enter your answer here" style="height: fit-content;margin-top: 18px;" autoGrow="true" [(ngModel)]="List.chC"></ion-textarea>
+          <ion-checkbox style="margin-top: auto;margin-bottom: auto;" [(ngModel)]="Anstatus.boolC"></ion-checkbox>
+        </ion-item>
+      </ion-card>
+
+      <ion-card>
+        <ion-item lines="none">
+          <ion-label>D. </ion-label>
+          <ion-textarea placeholder="Please enter your answer here" style="height: fit-content;margin-top: 18px;" autoGrow="true" [(ngModel)]="List.chD"></ion-textarea>
+          <ion-checkbox style="margin-top: auto;margin-bottom: auto;" [(ngModel)]="Anstatus.boolD"></ion-checkbox>
+        </ion-item>
+      </ion-card>
+
+  </ion-list>
+</ion-content>
+<ion-button color="warning" style="margin-top: auto;" (click)="editquiz()">Edit</ion-button>

@@ -1,0 +1,55 @@
+<ion-content>
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title style="text-align: center;">All Quiz</ion-title>
+      <ion-button style="width: fit-content;height: fit-content;float: right;" fill="clear" (click)="gotoaddpage()">
+        <ion-icon name="add-outline" size="large" style="float: right;color: #339933;">add</ion-icon>
+      </ion-button>
+    </ion-toolbar>
+  </ion-header>
+  <ion-card-content *ngIf="quiz?.length == 0" style="height: 100%;display: flex;align-items: center; justify-content: center;">
+    <p *ngIf="quiz?.length == 0" style="text-align: center;vertical-align: middle;">No Quiz</p>
+  </ion-card-content>
+  <ion-card *ngFor="let i of quiz">
+    <div style="text-align: center;margin-top: 10px;margin-left: 75px;">
+      Question {{i.quizNo}}
+      <ion-button fill="clear" style="float: right;margin-right: 5px;height: fit-content;width: fit-content;" (click)="presentPopover(i,$event)">
+        <ion-icon size="large" name="ellipsis-vertical-outline" style="float:right;"></ion-icon>
+      </ion-button>
+    </div>
+    <ion-card style="height: fit-content;">
+      <ion-card-content style="text-align: center;height: fit-content;">
+        {{i.que}}
+      </ion-card-content>
+    </ion-card>
+    <ion-list>
+      <ion-radio-group [(ngModel)]="rdvalue">
+        <ion-card>
+          <ion-item lines="none">
+            <ion-radio style="margin-bottom: auto;margin-top: 12px;" slot="start" mode="md" value={{i.chA}}></ion-radio>
+            <ion-label style="white-space:unset;">A. {{i.chA}}</ion-label>
+          </ion-item>
+        </ion-card>
+        <ion-card>
+          <ion-item lines="none">
+            <ion-radio style="margin-bottom: auto;margin-top: 12px;" slot="start" mode="md" value={{i.chB}}></ion-radio>
+            <ion-label style="white-space:unset;">B. {{i.chB}}</ion-label>
+          </ion-item>
+        </ion-card>
+        <ion-card>
+          <ion-item lines="none">
+            <ion-radio style="margin-bottom: auto;margin-top: 12px;" slot="start" mode="md" value={{i.chC}}></ion-radio>
+            <ion-label style="white-space:unset;">C. {{i.chC}}</ion-label>
+          </ion-item>
+        </ion-card>
+        <ion-card>
+          <ion-item lines="none">
+            <ion-radio style="margin-bottom: auto;margin-top: 12px;" slot="start" mode="md" value={{i.chD}}></ion-radio>
+            <ion-label style="white-space:unset;">D. {{i.chD}}</ion-label>
+          </ion-item>
+        </ion-card>
+      </ion-radio-group>
+    </ion-list>
+    <ion-button style="width: 100%;" (click)="submit(i)">Submit</ion-button>
+  </ion-card>
+</ion-content>
