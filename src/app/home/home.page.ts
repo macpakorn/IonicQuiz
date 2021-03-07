@@ -9,11 +9,13 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
+
 export class HomePage implements OnInit {
   quiz: any = [];
   No = '0';
   rdvalue: any = '';
   anscheck = false;
+  Anstatus: any = { boolA: false, boolB: false, boolC: false, boolD: false};
   constructor(
     private fs: AngularFirestore,
     public navCtrl: NavController,
@@ -46,13 +48,16 @@ export class HomePage implements OnInit {
       }
     });
   }
+
   gotoaddpage() {
     this.ngOnInit();
     this.navCtrl.navigateForward('/addpage/' + this.No);
   }
+
   readData() {
     return this.fs.collection('quiz').snapshotChanges();
   }
+
   submit(list: any) {
     this.anscheck = false;
     for (const i of list.correct) {
@@ -88,5 +93,9 @@ export class HomePage implements OnInit {
       translucent: true
     });
     return await popover.present();
+  }
+
+  checkanswer(event) {
+    this.rdvalue = event.target.value;
   }
 }

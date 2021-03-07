@@ -23,7 +23,7 @@
       </ion-card-content>
     </ion-card>
     <ion-list>
-      <ion-radio-group [(ngModel)]="rdvalue">
+      <ion-radio-group (ionChange)="checkanswer($event)">
         <ion-card>
           <ion-item lines="none">
             <ion-radio style="margin-bottom: auto;margin-top: 12px;" slot="start" mode="md" value={{i.chA}}></ion-radio>
@@ -53,3 +53,4 @@
     <ion-button style="width: 100%;" (click)="submit(i)">Submit</ion-button>
   </ion-card>
 </ion-content>
+

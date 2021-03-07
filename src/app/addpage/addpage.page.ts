@@ -4,7 +4,7 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 
-export class Question { id: string; quizNo: string; que: string; chA: string; chB: string; chC: string; chD: string; correct: string; }
+export class Question { quizNo: string; que: string; chA: string; chB: string; chC: string; chD: string; correct: string; }
 
 @Component({
   selector: 'app-addpage',
@@ -53,7 +53,6 @@ export class AddpagePage implements OnInit {
       this.CorAns.push(this.addlist.chD);
     }
     this.addlist.correct = this.CorAns;
-    const id = this.fs.createId();
     const quizNo = this.No;
     const que = this.addlist.que;
     const chA = this.addlist.chA;
@@ -61,13 +60,15 @@ export class AddpagePage implements OnInit {
     const chC = this.addlist.chC;
     const chD = this.addlist.chD;
     const correct = this.addlist.correct;
-    const addQ: Question = {id, quizNo, que, chA, chB, chC, chD, correct};
+    const addQ: Question = {quizNo, que, chA, chB, chC, chD, correct};
     if (que === '' || chA === '' || chB === '' || chC === '' || chD === '') {
       this.addalert('Please complete the form');
     } else if (correct.length === 0 ) {
       this.addalert('Please select your correct answer at least one');
+    } else if ( chA !== chB || chA !== chC || chA !== chD || chB !== chC || chB !== chD || chC !== chD ) {
+      this.addalert('Please do not give the same answer');
     } else {
-      this.QuizCollection.doc(id).set(addQ);
+      this.QuizCollection.doc(quizNo).set(addQ);
       this.clear();
       this.addalert('Suceesfully');
     }

@@ -16,7 +16,7 @@ export class PopoverComponent implements OnInit {
   }
 
   delete() {
-    this.fs.doc('quiz/' + this.list.id).delete();
+    this.fs.doc('quiz/' + this.list.quizNo).delete();
     this.pop.dismiss();
   }
 
