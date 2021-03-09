@@ -65,7 +65,7 @@ export class AddpagePage implements OnInit {
       this.addalert('Please complete the form');
     } else if (correct.length === 0 ) {
       this.addalert('Please select your correct answer at least one');
-    } else if ( chA !== chB || chA !== chC || chA !== chD || chB !== chC || chB !== chD || chC !== chD ) {
+    } else if ( chA == chB || chA == chC || chA == chD || chB == chC || chB == chD || chC == chD ) {
       this.addalert('Please do not give the same answer');
     } else {
       this.QuizCollection.doc(quizNo).set(addQ);
